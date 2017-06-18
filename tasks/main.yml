@@ -1,0 +1,12 @@
+---
+- name: Ensure en_US.UTF-8 locale is present
+  locale_gen:
+    name: "{{ locale_language }}"
+    state: present
+
+- name: Save language in locale.conf
+  template:
+    src: locale.conf.j2
+    dest: /etc/locale.conf
+    owner: root
+    group: root
